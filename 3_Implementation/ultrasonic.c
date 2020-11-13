@@ -29,8 +29,7 @@ static void transfer(int fd, int data)
         int ret;
         uint8_t tx[] = {data};
         struct spi_ioc_transfer tr = {
-                .tx_buf = (unsigned long)tx,
-                .rx_buf = (unsigned long)rx,
+                .tx_buf = (unsigned long)tx;
                 .len = ARRAY_SIZE(tx),
                 .delay_usecs = delay,
                 .speed_hz = speed,
@@ -50,7 +49,7 @@ void delay(int seconds)
 
 
 volatile int i=0;
-int main(void)
+int main(int argc, char* argv[])
 {
     int count = 0,iter;
     volatile int t=0;
